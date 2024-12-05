@@ -3,7 +3,6 @@
 #include <string>
 #include <stdexcept>
 
-// Function to calculate the Hamming distance between two strings
 int hamming_distance(const std::string& str1, const std::string& str2) {
     if (str1.size() != str2.size()) {
         throw std::invalid_argument("Strings must be of equal length.");
@@ -16,7 +15,6 @@ int hamming_distance(const std::string& str1, const std::string& str2) {
     return distance;
 }
 
-// Test cases for Hamming distance
 TEST(HammingDistanceTest, EqualStrings) {
     EXPECT_EQ(hamming_distance("this is a test", "wokka wokka!!!"), 37);
 }
@@ -33,7 +31,6 @@ TEST(HammingDistanceTest, ThrowsOnDifferentLengths) {
     EXPECT_THROW(hamming_distance("short", "longer string"), std::invalid_argument);
 }
 
-// Main function to run tests
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
