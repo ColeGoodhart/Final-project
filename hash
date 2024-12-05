@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <stdexcept>
+#include <bitset>
+
+int hammingDistance(const std::string &str1, const std::string &str2) {
+    if (str1.length() != str2.length()) {
+        throw std::invalid_argument("Strings must be of the same length to calculate Hamming distance.");
+    }
+
+    int distance = 0;
+
+    for (size_t i = 0; i < str1.length(); ++i) {
+        unsigned char xorResult = str1[i] ^ str2[i];
+        distance += std::bitset<8>(xorResult).count();
+    }
+
+    return distance;
+}
+
+int main() {
+    std::string str1 = "this is a test";
+    std::string str2 = "wokka wokka!!!";
+
+    try {
+        int distance = hammingDistance(str1, str2);
+        std::cout << "Hamming Distance: " << distance << std::endl;
+    } catch (const std::invalid_argument &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+
